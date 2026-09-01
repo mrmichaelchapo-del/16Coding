@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box-btn {
+      padding: 12px 20px;
+      border: 2px solid black;
+      background: white;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+<button class="box-btn" id="myBtn">Download Project</button>
+
+<!-- JSON DATA -->
+<script id="projectData" type="application/json">
+{
+  "formatVersion": 1,
+  "engine": "16Coding",
+  "projectName": "Project",
+  "author": "Michael",
+  "assets": {
+    "sprites": ["assets/sprite1.png"],
+    "sounds": ["assets/sound1.wav"]
+  },
+  "settings": {
+    "resolution": "1920x1080",
+    "background": "#000000"
+  }
+}
+</script>
+
+<script>
+document.getElementById("myBtn").addEventListener("click", function() {
+
+  // 1. Get JSON text
+  const raw = document.getElementById("projectData").textContent;
+
+  // 2. Create a Blob (file-like object)
+  const blob = new Blob([raw], { type: "application/json" });
+
+  // 3. Create a temporary download link
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "project.16coding"; // file name
+
+  // 4. Trigger download
+  a.click();
+
+  // 5. Clean up
+  URL.revokeObjectURL(url);
+});
+</script>
+
+</body>
+</html>
