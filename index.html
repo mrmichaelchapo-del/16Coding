@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<button class="box-btn"button-id"myBtn">Download Project</button>
+
+<style>
+  .box-btn {
+    padding: 12px 20px;
+    border: 2px solid black;
+    background: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: sans-serif;
+  }
+</style>
+<script>
+  document.getElementById("myBtn").addEventListener("click", function() {
+    prompt("Do you want to download!");
+  });
+</script>
+<script type="application/json">
+{
+  "formatVersion": 1,
+  "engine": "16Coding",
+  "projectName": "Project",
+  "author": "Michael",
+  "assets": {
+    "sprites": ["assets/sprite1.png"],
+    "sounds": ["assets/sound1.wav"]
+  },
+  "settings": {
+    "resolution": "1920x1080",
+    "background": "#000000"
+  }
+}
+{
+  "formatVersion": 1,
+  "engine": "16Coding",
+  "projectId": "uuid-or-string",
+  "name": "My Project",
+  "author": "Michael",
+  "createdAt": "2026-08-31T23:25:00Z",
+  "updatedAt": "2026-08-31T23:30:00Z",
+
+  "settings": {
+    "resolution": "1920x1080",
+    "backgroundColor": "#000000",
+    "gridEnabled": false
+  },
+
+  "assets": {
+    "sprites": [
+      {
+        "id": "sprite1",
+        "name": "Player",
+        "path": "assets/sprites/player.png"
+      }
+    ],
+    "sounds": [
+      {
+        "id": "sound1",
+        "name": "Jump",
+        "path": "assets/sounds/jump.wav"
+      }
+    ]
+  },
+
+  "scene": {
+    "objects": [],
+    "scripts": []
+  }
+}
+{
+  "formatVersion": 1,
+  "engineName": "16Coding",
+  "engineVersion": "0.1.0",
+  "minSupportedVersion": "0.1.0",
+  "tool": "16Coding Editor",
+  "toolVersion": "0.1.0",
+  "notes": "project format"
+}
+<script type="application/json">
+</script>
