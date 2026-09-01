@@ -25,8 +25,41 @@
   "projectName": "Project",
   "author": "Michael",
   "assets": {
-    "sprites": ["assets/sprite1.png"],
+    "sprites": ["assets/sprite1.svg"],
     "sounds": ["assets/sound1.wav"]
+    "blocks": [none]
+// Workspace JSON
+let workspaceJSON = {
+  blocks: {}
+};
+
+// Update a block's data inside the JSON
+function updateBlockJSON(blockId, data) {
+  workspaceJSON.blocks[blockId] = {
+    ...workspaceJSON.blocks[blockId],
+    ...data
+  };
+
+  console.log("Updated JSON:", JSON.stringify(workspaceJSON, null, 2));
+}
+
+// Fired whenever a block is dragged
+function onBlockDrag(block) {
+  updateBlockJSON(block.id, {
+    position: {
+      x: block.x,
+      y: block.y
+    }
+  });
+}
+
+// Fired whenever a block snaps to another block
+function onBlockSnap(block, targetBlock) {
+  updateBlockJSON(block.id, {
+    snappedTo: targetBlock.id,
+    connectionType: block.connectionType
+  });
+}
   },
   "settings": {
     "resolution": "1920x1080",
