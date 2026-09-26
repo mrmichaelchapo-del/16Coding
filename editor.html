@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<body>
+<button id="makeZip">Download Project</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+document.getElementById("makeZip").onclick = async () => {
+  const zip = new JSZip();
+
+  const assets = zip.folder("assets");
+  assets.file("README.txt", "Blank project, unavailable");
+  assets.file("uu.json", "assets: [ true: "yes" ]");
+
+  // Folder 2
+  const data = zip.folder("data");
+  data.file("info.json", JSON.stringify({ message: "Hello from data!" }));
+
+  // Generate ZIP
+  const blob = await zip.generateAsync({ type: "blob" });
+
+  // Download ZIP
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "Project.16coding";
+  a.click();
+};
+</script>
+</body>
+<html>
