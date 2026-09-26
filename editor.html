@@ -11,6 +11,51 @@ document.getElementById("makeZip").onclick = async () => {
   const assets = zip.folder("assets");
   assets.file("README.txt", "Blank project, unavailable");
   assets.file("uu.json", "assets: [ true: "yes" ]");
+  assets.file("default.svg", "<svg width="200" height="200" viewBox="0 0 200 200"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="200" height="200" fill="#ffe9c9"/>
+
+  <!-- Cat body -->
+  <ellipse cx="100" cy="130" rx="45" ry="35" fill="#f4b27a"/>
+
+  <!-- Cat head -->
+  <circle cx="100" cy="80" r="35" fill="#f4b27a"/>
+
+  <!-- Ears -->
+  <polygon points="70,65 55,40 80,50" fill="#f4b27a"/>
+  <polygon points="130,65 145,40 120,50" fill="#f4b27a"/>
+
+  <!-- Inner ears -->
+  <polygon points="70,65 58,45 77,52" fill="#f9c3a5"/>
+  <polygon points="130,65 142,45 123,52" fill="#f9c3a5"/>
+
+  <!-- Eyes -->
+  <circle cx="88" cy="78" r="4" fill="#000"/>
+  <circle cx="112" cy="78" r="4" fill="#000"/>
+
+  <!-- Nose -->
+  <polygon points="100,84 96,88 104,88" fill="#ff7b7b"/>
+
+  <!-- Mouth -->
+  <path d="M96 90 Q100 94 104 90" stroke="#b35a3b" stroke-width="2" fill="none"/>
+
+  <!-- Whiskers -->
+  <line x1="80" y1="86" x2="60" y2="82" stroke="#b35a3b" stroke-width="2"/>
+  <line x1="80" y1="90" x2="60" y2="92" stroke="#b35a3b" stroke-width="2"/>
+  <line x1="120" y1="86" x2="140" y2="82" stroke="#b35a3b" stroke-width="2"/>
+  <line x1="120" y1="90" x2="140" y2="92" stroke="#b35a3b" stroke-width="2"/>
+
+  <!-- Tail -->
+  <path d="M140 130 Q165 120 160 100" 
+        stroke="#f4b27a" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- Paws -->
+  <circle cx="80" cy="155" r="8" fill="#f4b27a"/>
+  <circle cx="120" cy="155" r="8" fill="#f4b27a"/>
+
+</svg>");
 
   // Folder 2
   const data = zip.folder("data");
