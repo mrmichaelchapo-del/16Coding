@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>16Coding Editor</title>
+</head>
+<body>
+  <button id="makeZip">Download Project</button>
+  <textarea id="projectText" placeholder="Project"></textarea>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <script>
+  document.getElementById("makeZip").onclick = async () => {
+    const zip = new JSZip();
+
+    const assets = zip.folder("assets");
+    assets.file("README.txt", "Blank project, unavailable");
+    assets.file("uu.json", '{"assets":[{"enabled":true,"label":"yes"}]}');
+
+    assets.file("default.svg", `
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#ffe9c9"/>
+  <ellipse cx="100" cy="130" rx="45" ry="35" fill="#f4b27a"/>
+  <circle cx="100" cy="80" r="35" fill="#f4b27a"/>
+  <polygon points="70,65 55,40 80,50" fill="#f4b27a"/>
+  <polygon points="130,65 145,40 120,50" fill="#f4b27a"/>
+  <polygon points="70,65 58,45 77,52" fill="#f9c3a5"/>
+  <polygon points="130,65 142,45 123,52" fill="#f9c3a5"/>
+  <circle cx="88" cy="78" r="4" fill="#000"/>
+  <circle cx="112" cy="78" r="4" fill="#000"/>
+  <polygon points="100,84 96,88 104,88" fill="#ff7b7b"/>
+  <path d="M96 90 Q100 94 104 90" stroke="#b35a3b" stroke-width="2" fill="none"/>
+  <line x1="80" y1="86" x2="60" y2="82" stroke="#b35a3b" stroke-width="2"/>
+  <line x1="80" y1="90" x2="60" y2="92" stroke="#b35a3b" stroke-width="2"/>
+  <line x1="120" y1="86" x2="140" y2="82" stroke="#b35a3b" stroke-width="2"/>
+  <line x1="120" y1="90" x2="140" y2="92" stroke="#b35a3b" stroke-width="2"/>
+  <path d="M140 130 Q165 120 160 100" stroke="#f4b27a" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <circle cx="80" cy="155" r="8" fill="#f4b27a"/>
+  <circle cx="120" cy="155" r="8" fill="#f4b27a"/>
+</svg>
+    `);
+
+    const data = zip.folder("data");
+    const projectText = document.getElementById("projectText").value;
+    data.file("info.json", JSON.stringify({ message: "Hello from data!" }));
+    data.file("project.txt", projectText || "No project text provided.");
+
+    const blob = await zip.generateAsync({ type: "blob" });
+
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "Project.16coding";
+    a.click();
+  };
+  </script>
+</body>
+</html>
