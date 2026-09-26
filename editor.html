@@ -43,8 +43,8 @@
 
     const data = zip.folder("data");
     const projectText = document.getElementById("projectText").value;
-    data.file("info.json", JSON.stringify({ message: "Hello from data!" }));
-    data.file("project.txt", projectText || "No project text provided.");
+    data.file("info.json", JSON.stringify({ message: "Hello" }));
+    data.file("project.md", projectText || "No project text provided.");
 
     const blob = await zip.generateAsync({ type: "blob" });
 
